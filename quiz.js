@@ -315,23 +315,13 @@ const nxtBtn = document.getElementById("nextBtn");
 const questionCount = document.getElementById("question-count");
 
 function loadQuestion() {
-
     const currentQuestion = quizQuestions[questionIndex];
 
-    document.getElementById("question").innerText =
-        currentQuestion.question;
-
-    document.getElementById("option1").innerText =
-        currentQuestion.options[0];
-
-    document.getElementById("option2").innerText =
-        currentQuestion.options[1];
-
-    document.getElementById("option3").innerText =
-        currentQuestion.options[2];
-
-    document.getElementById("option4").innerText =
-        currentQuestion.options[3];
+    document.getElementById("question").innerText = currentQuestion.question;
+    document.getElementById("option1").innerText = currentQuestion.options[0];
+    document.getElementById("option2").innerText = currentQuestion.options[1];
+    document.getElementById("option3").innerText = currentQuestion.options[2];
+    document.getElementById("option4").innerText = currentQuestion.options[3];
 
     loadUI();
     clearSelectedOption();
@@ -348,21 +338,23 @@ function loadUI() {
         `Question : ${questionIndex + 1} of ${quizQuestions.length}`;
 }
 
+function clearSelectedOption() {
+    options.forEach(option => {
+        option.classList.remove("selected");
+    });
+}
+
 options.forEach(option => {
-
     option.addEventListener("click", () => {
-
         options.forEach(option => {
             option.classList.remove("selected");
         });
 
         option.classList.add("selected");
     });
-
 });
 
 nxtBtn.addEventListener("click", () => {
-
     const selectedAnswer = document.querySelector(".selected");
 
     if (!selectedAnswer) {
@@ -378,7 +370,6 @@ nxtBtn.addEventListener("click", () => {
     }
 
     if (questionIndex === quizQuestions.length - 1) {
-
         localStorage.setItem("score", score);
         localStorage.setItem("totalQuestions", quizQuestions.length);
 
