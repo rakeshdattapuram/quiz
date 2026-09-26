@@ -666,7 +666,7 @@ questionIndex++;
 
 
 
-if (questionIndex === quizQuestions.length - 1) {  
+if (questionIndex === quizQuestions.length) {  
 localStorage.setItem("score", score);  
 localStorage.setItem("totalQuestions", quizQuestions.length);  
 
@@ -677,7 +677,7 @@ questionIndex++;
 loadQuestion();
 loadUI();
 }
-if (questionIndex === quizQuestions.length - 1) {
+if (questionIndex === quizQuestions.length) {
 nxtBtn.innerText = "Finish Quiz";
 } else {
 nxtBtn.innerText = "Next Question";
