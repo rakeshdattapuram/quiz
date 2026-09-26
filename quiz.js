@@ -335,14 +335,21 @@ nxtBtn.addEventListener("click", () => {
     console.log(score);
     questionIndex++;
 
-    if (questionIndex < quizQuestions.length) {
-        loadQuestion();
-        loadUI();
-    }
-    else {
-        localStorage.setItem("score", score);
-        window.location.href = "result.html";
-    }
+    if (questionIndex === quizQuestions.length - 1) {
+    localStorage.setItem("score", score);
+    localStorage.setItem("totalQuestions", quizQuestions.length);
+
+    window.location.href = "result.html";
+} else {
+    questionIndex++;
+    loadQuestion();
+    loadUI();
+}
+if (questionIndex === quizQuestions.length - 1) {
+    nxtBtn.innerText = "Finish Quiz";
+} else {
+    nxtBtn.innerText = "Next Question";
+}
     clearSelectedOption();
 })
 
