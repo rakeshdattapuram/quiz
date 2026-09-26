@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    font-family: Arial, sans-serif;
+}
+
+.result-container {
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.result-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #243b55;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.result-container h1 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.result-message {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.result-score {
+    background: #f2f5f8;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.result-score span {
+    color: #666;
+    font-size: 15px;
+}
+
+.result-score h2 {
+    font-size: 40px;
+    color: #243b55;
+    margin-top: 8px;
+}
+
+.restart-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #243b55;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.restart-btn:hover {
+    background: #141e30;
+}
+
+.restart-btn i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+
+    .result-container {
+        padding: 35px 25px;
+    }
+
+    .result-container h1 {
+        font-size: 28px;
+    }
+
+    .result-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+
+    .result-container {
+        padding: 30px 20px;
+        border-radius: 12px;
+    }
+
+    .result-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .result-container h1 {
+        font-size: 24px;
+    }
+
+    .result-message {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .result-score {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .result-score span {
+        font-size: 14px;
+    }
+
+    .result-score h2 {
+        font-size: 34px;
+    }
+
+    .restart-btn {
+        padding: 13px;
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .result-container {
+        padding: 25px 15px;
+    }
+
+    .result-container h1 {
+        font-size: 21px;
+    }
+
+    .result-score h2 {
+        font-size: 30px;
+    }
+}
