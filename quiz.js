@@ -300,74 +300,96 @@ const questions = [
         answer: "Google Drive"
     }
 ];
+
 questions.sort(() => Math.random() - 0.5);
+
 let quizQuestions = questions.slice(0, 5);
+
 localStorage.setItem("totalQuestions", quizQuestions.length);
 
+let questionIndex = 0;
+let score = 0;
 
 const options = document.querySelectorAll(".option");
+const nxtBtn = document.getElementById("nextBtn");
+const questionCount = document.getElementById("question-count");
+
+function loadQuestion() {
+
+    const currentQuestion = quizQuestions[questionIndex];
+
+    document.getElementById("question").innerText =
+        currentQuestion.question;
+
+    document.getElementById("option1").innerText =
+        currentQuestion.options[0];
+
+    document.getElementById("option2").innerText =
+        currentQuestion.options[1];
+
+    document.getElementById("option3").innerText =
+        currentQuestion.options[2];
+
+    document.getElementById("option4").innerText =
+        currentQuestion.options[3];
+
+    loadUI();
+    clearSelectedOption();
+
+    if (questionIndex === quizQuestions.length - 1) {
+        nxtBtn.innerText = "Finish Quiz";
+    } else {
+        nxtBtn.innerText = "Next Question";
+    }
+}
+
+function loadUI() {
+    questionCount.innerText =
+        `Question : ${questionIndex + 1} of ${quizQuestions.length}`;
+}
+
 options.forEach(option => {
+
     option.addEventListener("click", () => {
 
         options.forEach(option => {
             option.classList.remove("selected");
-        })
-        option.classList.add("selected");
-    })
-})
+        });
 
-let questionIndex = 0;
-let score = 0;
-function loadQuestion() {
-    document.getElementById("question").innerText = quizQuestions[questionIndex].question;
-    document.getElementById("option1").innerText = quizQuestions[questionIndex].options[0];
-    document.getElementById("option2").innerText = quizQuestions[questionIndex].options[1];
-    document.getElementById("option3").innerText = quizQuestions[questionIndex].options[2];
-    document.getElementById("option4").innerText = quizQuestions[questionIndex].options[3];
-}
-let nxtBtn = document.getElementById("nextBtn");
+        option.classList.add("selected");
+    });
+
+});
+
 nxtBtn.addEventListener("click", () => {
-    let selectedanswer = document.querySelector(".selected");
-    console.log(selectedanswer.innerText);
-    if (selectedanswer.innerText == quizQuestions[questionIndex].answer) {
+
+    const selectedAnswer = document.querySelector(".selected");
+
+    if (!selectedAnswer) {
+        alert("Please select an answer.");
+        return;
+    }
+
+    if (
+        selectedAnswer.innerText ===
+        quizQuestions[questionIndex].answer
+    ) {
         score++;
     }
-    console.log(score);
-    questionIndex++;
 
     if (questionIndex === quizQuestions.length - 1) {
-    localStorage.setItem("score", score);
-    localStorage.setItem("totalQuestions", quizQuestions.length);
 
-    window.location.href = "result.html";
-} else {
+        localStorage.setItem("score", score);
+        localStorage.setItem("totalQuestions", quizQuestions.length);
+
+        window.location.href = "result.html";
+
+        return;
+    }
+
     questionIndex++;
+
     loadQuestion();
-    loadUI();
-}
-if (questionIndex === quizQuestions.length - 1) {
-    nxtBtn.innerText = "Finish Quiz";
-} else {
-    nxtBtn.innerText = "Next Question";
-}
-    clearSelectedOption();
-})
+});
 
-
-let questionCount = document.getElementById("question-count");
-
-function loadUI() {
-    questionCount.innerText = `Question : ${questionIndex + 1} of ${quizQuestions.length}`;
-
-}
-loadUI();
 loadQuestion();
-
-
-function clearSelectedOption() {
-    let options = document.querySelectorAll(".selected");
-
-    options.forEach(option => {
-        option.classList.remove("selected");
-    });
-}
