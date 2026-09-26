@@ -89,8 +89,7 @@ body {
 @media (max-width: 768px) {
     body {
         padding: 15px;
-        margin-left: 80px;
-        margin-right: 80px;
+ 
     }
 
     .result-container {
@@ -112,8 +111,7 @@ body {
 @media (max-width: 480px) {
     body {
         padding: 12px;
-        margin-left: 80px;
-        margin-right: 80px;
+   
     }
 
     .result-container {
