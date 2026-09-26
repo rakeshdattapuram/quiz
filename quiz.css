@@ -129,11 +129,7 @@ body {
 
 
 @media (max-width: 500px) {
-    body {
-        margin-left: 80px;
-        margin-right: 80px;
-
-    }
+   
 
     .quiz-container {
         padding: 10px;
